@@ -1,0 +1,21 @@
+{% macro render_field(codigo, tipo, texto_pergunta) %}
+    <div class="form-group" style="margin-bottom: 15px;">
+        <label for="{{ codigo }}" style="display: block; font-weight: bold; margin-bottom: 5px;">{{ texto_pergunta }}</label>
+        
+        {% if tipo == 'Sim/Não' %}
+            <select name="{{ codigo }}" id="{{ codigo }}" class="gatilho-select" data-codigo="{{ codigo }}" style="width: 100%; padding: 8px;">
+                <option value="">Selecione...</option>
+                <option value="SIM">Sim</option>
+                <option value="NÃO">Não</option>
+            </select>
+            
+        {% elif tipo == 'Texto' or tipo == 'Data' %}
+            <input type="{{ 'date' if tipo == 'Data' else 'text' }}" name="{{ codigo }}" id="{{ codigo }}" style="width: 100%; padding: 8px;">
+            
+        {% elif tipo == 'Múltipla' or tipo == 'Lista' %}
+            <select name="{{ codigo }}" id="{{ codigo }}" style="width: 100%; padding: 8px;">
+                <option value="">Selecione a melhor opção...</option>
+            </select>
+        {% endif %}
+    </div>
+{% endmacro %}

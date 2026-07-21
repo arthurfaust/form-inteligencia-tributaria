@@ -5,6 +5,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def diagnostico():
     if request.method == 'POST':
+        # 
         dados_cliente = request.form.to_dict()
         return {"status": "sucess", "dados_recebidos": dados_cliente}
     
@@ -29,8 +30,8 @@ def diagnostico():
             'Tipo': 'Sim/Não',
             'Pergunta / Campo': 'Recebe rendimentos do trabalho?',
             'subperguntas': [
-                {'Código': 'RT001', 'Tipo': 'Texto', 'Pergunta / Campo': '↳ Fonte pagadora'},
-                {'Código': 'RT002', 'Tipo': 'Lista', 'Pergunta / Campo': '↳ Tipo de rendimento'}
+                {'Código': 'RT001', 'Tipo': 'Texto', 'Pergunta / Campo': 'Fonte pagadora'},
+                {'Código': 'RT002', 'Tipo': 'Lista', 'Pergunta / Campo': 'Tipo de rendimento'}
             ]
         }
     ]
@@ -38,4 +39,4 @@ def diagnostico():
     return render_template('diagnostico.html', perguntas=perguntas_estruturadas)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) 
